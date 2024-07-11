@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_kunalnano_juice_shop_1720712169204-pr-trigger-input-set
+  identifier: Build_kunalnano_juice_shop_1720712169204prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_kunalnano_juice_shop_1720712169204
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>

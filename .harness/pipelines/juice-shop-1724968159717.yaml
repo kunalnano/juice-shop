@@ -20,8 +20,20 @@ pipeline:
           execution:
             steps:
               - step:
+                  identifier: updateNode
+                  name: Update Node.js Version
+                  type: Run
+                  spec:
+                    shell: Sh
+                    command: |-
+                      # Download and install Node.js version 18.x
+                      curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+                      apt-get install -y nodejs
+                      # Verify Node.js version
+                      node -v
+              - step:
                   identifier: installdependencies
-                  name: install dependencies
+                  name: Install dependencies
                   spec:
                     shell: Sh
                     command: |-
@@ -31,21 +43,21 @@ pipeline:
                   type: Run
               - step:
                   identifier: test
-                  name: test
+                  name: Test
                   spec:
                     command: npm run test
                   timeout: ""
                   type: Run
               - step:
                   identifier: lint
-                  name: lint
+                  name: Lint
                   spec:
                     command: npm run lint
                   timeout: ""
                   type: Run
               - step:
                   identifier: dockerbuild
-                  name: docker_build
+                  name: Docker Build
                   spec:
                     caching: true
                     connectorRef: <+input>

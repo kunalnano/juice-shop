@@ -23,7 +23,10 @@ pipeline:
                   identifier: installdependencies
                   name: install dependencies
                   spec:
-                    command: npm install
+                    shell: Sh
+                    command: |-
+                      npm install
+                      npm install -g @angular/cli
                   timeout: ""
                   type: Run
               - step:
@@ -52,9 +55,9 @@ pipeline:
                   timeout: ""
                   type: BuildAndPushDockerRegistry
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
-            spec: {}
             type: Cloud
+            spec: {}
         type: CI

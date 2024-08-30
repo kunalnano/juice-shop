@@ -1,6 +1,6 @@
 pipeline:
   identifier: Build_kunalnano_juice_shop_1725034562262
-  name: Build juice-shop
+  name: Vulnerable juice-shop
   orgIdentifier: TPMLabs
   projectIdentifier: testal
   properties:
@@ -130,3 +130,4 @@ pipeline:
                     isAutoRejectEnabled: true
                     approverInputs: []
         tags: {}
+  tags: {}

@@ -55,8 +55,7 @@ pipeline:
                       # Change directory to the Angular workspace
                       cd frontend
                       # Run tests with the necessary Chrome flags
-                      ng test --watch=false --source-map=true --no-sandbox --disable-gpu
-                    timeout: ""
+                      ng test --watch=false --source-map=true
               - step:
                   identifier: lint
                   name: Lint

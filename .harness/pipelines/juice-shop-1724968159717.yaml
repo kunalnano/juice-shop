@@ -22,7 +22,7 @@ pipeline:
             steps:
               - step:
                   identifier: installNode
-                  name: Install Node.js Version
+                  name: Install Nodejs Version
                   type: Run
                   spec:
                     shell: Sh
@@ -34,6 +34,7 @@ pipeline:
                       # Verify Node.js version
                       node -v
                       npm -v
+                      npm install eslint-plugin-n
               - step:
                   identifier: installdependencies
                   name: Install dependencies

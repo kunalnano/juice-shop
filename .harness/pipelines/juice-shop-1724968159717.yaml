@@ -26,8 +26,8 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      # Download and install Node.js version 18.x
-                      curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+                      # Download and install Node.js version 18.3
+                      curl -fsSL https://deb.nodesource.com/setup_18.3 | bash -
                       apt-get install -y nodejs
                       # Verify Node.js version
                       node -v

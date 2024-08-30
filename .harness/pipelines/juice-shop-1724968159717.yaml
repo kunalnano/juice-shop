@@ -13,6 +13,7 @@ pipeline:
     - stage:
         identifier: build
         name: build
+        type: CI
         spec:
           caching:
             enabled: true
@@ -26,50 +27,57 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      # Download and install Node.js version 18.3
-                      curl -fsSL https://deb.nodesource.com/setup_18.3 | bash -
-                      apt-get install -y nodejs
+                      # Download Node.js
+                      curl -fsSL https://nodejs.org/dist/v18.3.0/node-v18.3.0-linux-x64.tar.xz -o node-v18.3.0-linux-x64.tar.xz
+                      # Extract the archive
+                      tar -xJf node-v18.3.0-linux-x64.tar.xz
+                      # Navigate to the extracted directory
+                      cd node-v18.3.0-linux-x64
+                      # Add the extracted node and npm binaries to PATH
+                      export PATH=$PWD/bin:$PATH
                       # Verify Node.js version
                       node -v
+                      npm -v
               - step:
                   identifier: installdependencies
                   name: Install dependencies
+                  type: Run
                   spec:
                     shell: Sh
                     command: |-
                       npm install
                       npm install -g @angular/cli
-                  timeout: ""
-                  type: Run
+                    timeout: ""
               - step:
                   identifier: test
                   name: Test
-                  spec:
-                    command: npm run test
-                  timeout: ""
                   type: Run
+                  spec:
+                    shell: Sh
+                    command: npm run test
+                    timeout: ""
               - step:
                   identifier: lint
                   name: Lint
-                  spec:
-                    command: npm run lint
-                  timeout: ""
                   type: Run
+                  spec:
+                    shell: Sh
+                    command: npm run lint
+                    timeout: ""
               - step:
                   identifier: dockerbuild
                   name: Docker Build
+                  type: BuildAndPushDockerRegistry
                   spec:
                     caching: true
                     connectorRef: <+input>
                     repo: hello/world
                     tags:
                       - latest
-                  timeout: ""
-                  type: BuildAndPushDockerRegistry
+                    timeout: ""
           platform:
             os: Linux
             arch: Amd64
           runtime:
             type: Cloud
             spec: {}
-        type: CI

@@ -21,20 +21,16 @@ pipeline:
           execution:
             steps:
               - step:
-                  identifier: updateNode
-                  name: Update Node.js Version
+                  identifier: installNode
+                  name: Install Node.js Version
                   type: Run
                   spec:
                     shell: Sh
                     command: |-
-                      # Download Node.js
-                      curl -fsSL https://nodejs.org/dist/v18.3.0/node-v18.3.0-linux-x64.tar.xz -o node-v18.3.0-linux-x64.tar.xz
-                      # Extract the archive
-                      tar -xJf node-v18.3.0-linux-x64.tar.xz
-                      # Navigate to the extracted directory
-                      cd node-v18.3.0-linux-x64
-                      # Add the extracted node and npm binaries to PATH
-                      export PATH=$PWD/bin:$PATH
+                      # Install n package to manage Node.js versions
+                      npm install -g n
+                      # Install Node.js version 18.19 or higher
+                      n 18.19.0
                       # Verify Node.js version
                       node -v
                       npm -v

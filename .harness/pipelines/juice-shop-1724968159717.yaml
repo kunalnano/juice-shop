@@ -41,6 +41,7 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
+                      cd frontend
                       npm install
                       npm install -g @angular/cli
                     timeout: ""
@@ -51,6 +52,8 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
+                      # Change directory to the Angular workspace
+                      cd frontend
                       # Run tests with the necessary Chrome flags
                       ng test --watch=false --source-map=true --no-sandbox --disable-gpu
                     timeout: ""
@@ -60,7 +63,9 @@ pipeline:
                   type: Run
                   spec:
                     shell: Sh
-                    command: npm run lint
+                    command: |-
+                      cd frontend
+                      npm run lint
                     timeout: ""
               - step:
                   identifier: dockerbuild

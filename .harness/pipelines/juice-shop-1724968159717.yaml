@@ -72,12 +72,11 @@ pipeline:
                   name: Docker Build
                   type: BuildAndPushDockerRegistry
                   spec:
-                    caching: true
                     connectorRef: <+input>
-                    repo: hello/world
+                    repo: alsharma9/juice-shop
                     tags:
                       - latest
-                    timeout: ""
+                    caching: true
           platform:
             os: Linux
             arch: Amd64

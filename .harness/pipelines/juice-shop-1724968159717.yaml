@@ -29,7 +29,7 @@ pipeline:
                     command: |-
                       # Install n package to manage Node.js versions
                       npm install -g n
-                      # Install Node.js version 18.19 or higher
+                      # Install Node.js version 18.19.0 or higher
                       n 18.19.0
                       # Verify Node.js version
                       node -v
@@ -50,7 +50,9 @@ pipeline:
                   type: Run
                   spec:
                     shell: Sh
-                    command: npm run test
+                    command: |-
+                      # Run tests with the necessary Chrome flags
+                      ng test --watch=false --source-map=true --no-sandbox --disable-gpu
                     timeout: ""
               - step:
                   identifier: lint

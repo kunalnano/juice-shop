@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_kunalnano_juice_shop_1725034562262-push-trigger-input-set
+  identifier: Build_kunalnano_juice_shop_1725034562262pushtriggerinputset
+  orgIdentifier: TPMLabs
+  projectIdentifier: testal
+  pipeline:
+    identifier: Build_kunalnano_juice_shop_1725034562262
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>

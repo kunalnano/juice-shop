@@ -75,7 +75,7 @@ pipeline:
                         connectorRef: <+input>
                         repo: alsharma9/juice-shop
                         tags:
-                          - latest
+                          - tpm
                         caching: true
                       timeout: ""
                       type: BuildAndPushDockerRegistry

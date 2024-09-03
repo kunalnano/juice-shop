@@ -37,7 +37,7 @@ pipeline:
                   type: Run
               - step:
                   identifier: test
-                  name: test
+                  name: init
                   spec:
                     shell: Sh
                     command: |-
@@ -48,7 +48,7 @@ pipeline:
                   type: Run
               - step:
                   type: Run
-                  name: Test
+                  name: unit test
                   identifier: Test
                   spec:
                     shell: Sh

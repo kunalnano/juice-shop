@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_kunalnano_juice_shop_1725480554749-pr-trigger-input-set
+  identifier: Build_kunalnano_juice_shop_1725480554749prtriggerinputset
+  orgIdentifier: TPMLabs
+  projectIdentifier: testal
+  pipeline:
+    identifier: Build_kunalnano_juice_shop_1725480554749
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>

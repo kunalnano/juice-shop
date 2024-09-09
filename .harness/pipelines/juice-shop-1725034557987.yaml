@@ -72,7 +72,7 @@ pipeline:
                       identifier: dockerbuild
                       name: docker_build
                       spec:
-                        connectorRef: <+input>
+                        connectorRef: testal
                         repo: alsharma9/juice-shop
                         tags:
                           - tpm
